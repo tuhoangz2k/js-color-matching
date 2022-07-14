@@ -5,7 +5,7 @@ import {getColorElementList,getListColorElement,getNotActiveElements,getPlayAgai
 let selections = []
 let gameState = GAME_STATUS.PLAYING
 let timer=createTimer({
-    seconds:20,
+    seconds:60,
     onChange:onChange,
     onfinish:onFinish
 })
