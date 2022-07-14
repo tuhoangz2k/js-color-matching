@@ -1,7 +1,8 @@
 import { GAME_STATUS ,PAIRS_COUNT} from './constants.js'
 import {getRandomColorPairs, showPlayAgainButton, hidePlayAgainButton,setTimeText,createTimer} from './utils.js'
-import {getColorElementList,getListColorElement,getNotActiveElements,getPlayAgainButton} from './selectors.js'
+import {getColorElementList,getListColorElement,getNotActiveElements,getPlayAgainButton,getColorBackground} from './selectors.js'
 // Global variables
+
 let selections = []
 let gameState = GAME_STATUS.PLAYING
 let timer=createTimer({
@@ -40,6 +41,8 @@ function reset() {
     setTimeText('')
     hidePlayAgainButton()
     timer.start()
+    let backgroundColor=getColorBackground()
+    backgroundColor.style.backgroundColor='goldenrod'
 }
 
 function handleAgainButtonClick(){
@@ -66,6 +69,8 @@ if(isMatch){
     // check win
     const isNotActive=getNotActiveElements()
     // if win
+    let backgroundColor=getColorBackground()
+    backgroundColor.style.backgroundColor=selections[0].dataset.color
     if(isNotActive.length===0){
         selections=[]
         gameState=GAME_STATUS.FINISHED
